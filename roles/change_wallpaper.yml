@@ -4,8 +4,8 @@
     src: "{{ item }}"
     dest: '/root/Pictures'
   with_fileglob:
-    - "imgs/1.png"
+    - "imgs/QUTWH_full.jpg"
 
 #################### Set the picture
 - name: Set the background
-  shell: gsettings set org.gnome.desktop.background picture-uri file:///root/Pictures/1.png
+  shell: gsettings set org.gnome.desktop.background picture-uri file:///root/Pictures/QUTWH_full.png

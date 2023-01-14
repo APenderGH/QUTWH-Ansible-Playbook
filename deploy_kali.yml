@@ -15,7 +15,4 @@
     #- import_tasks: roles/deploy_social_engineering.yml
     # Deploy leaked/SecList wordlists
     - import_tasks: roles/deploy_wordlists.yml
-    # Deploy bins
-    - import_tasks: roles/deploy_bins.yml
-    - import_tasks: roles/wrap-up.yml
     

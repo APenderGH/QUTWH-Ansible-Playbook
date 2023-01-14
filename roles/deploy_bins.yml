@@ -1,8 +1,0 @@
-
-- name: Copying executables
-  copy:
-    src: "{{ item }}"
-    dest: '/usr/local/bin/'
-    mode: u+rwx,g+x,o+x
-  with_fileglob:
-    - "bins/*"
