@@ -1,5 +1,4 @@
-- name: Update
-  shell: apt update -y && apt upgrade -y
+
 - name: Update apt
   apt:
     update_cache: yes
