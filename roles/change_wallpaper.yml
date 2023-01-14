@@ -1,38 +1,43 @@
+- name: Make /opt/qutwh-images/
+  shell: mkdir /opt/qutwh-images/
 #################### Copy images
 - name: Copying the wallpaper
   copy:
     src: '{{ item }}'
-    dest: '/root/Pictures'
+    dest: '/opt/qutwh-images/'
   with_fileglob:
     - 'imgs/QUTWH_full.jpg'
 
 - name: Copying the login background
   copy:
     src: '{{ item }}'
-    dest: '/root/Pictures'
+    dest: '/opt/qutwh-images/'
   with_fileglob:
     - 'imgs/QUTWH_login.jpg'
 
 - name: Copying the profile picture
   copy:
     src: '{{ item }}'
-    dest: '/root/Pictures'
+    dest: '/opt/qutwh-images/'
   with_fileglob:
     - 'imgs/QUTWH_profile.png'
 
 #################### Set the images
 - name: Set the wallpaper
-  shell: xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitorVirtual1/workspace0/last-image -s /root/Pictures/QUTWH_full.png
+  shell: xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitorVirtual1/workspace0/last-image -s /opt/qutwh-images/QUTWH_full.png
 
 - name: Set the login background and save a copy of the original
   copy:
     src: /usr/share/desktop-base/kali-theme/login/background
     dest: /usr/share/desktop-base/kali-theme/login/background.bak
-  shell: ln -s /root/Pictures/QUTWH_login.jpg /usr/share/desktop-base/kali-theme/login/background
+  shell: ln -s /opt/qutwh-images/QUTWH_login.jpg /usr/share/desktop-base/kali-theme/login/background
 
 - name: Set the login profile
   copy:
-    src: /root/Pictures/QUTWH_profile.png
-    dest: /var/lib/AccountsService/icons/qutwh.png
-
+    src: /opt/qutwh-images/QUTWH_profile.png
+    dest: /home/qutwh/.face
+      #  copy:
+      #   src: /opt/qutwh-images/QUTWH_profile.png
+      #   dest: /var/lib/AccountsService/icons/qutwh.png
+      #  shell: echo -e '[User]\nIcon=/var/lib/AccountsService/icons/qutwh.png' | sudo tee -a /var/lib/AccountsService/users/qutwh
 
