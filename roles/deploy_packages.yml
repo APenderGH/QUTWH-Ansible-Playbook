@@ -1,0 +1,19 @@
+- name: Update
+  shell: apt-get update
+
+- name: Install Ghidra
+  apt:
+    name: ghidra
+    state: present
+- name: Install Audacity
+  apt:
+    name: audacity
+    state: present
+- name: Install PEASS
+  apt:
+    name: peass
+    state: present
+- name: Install apktool
+  apt:
+    name: apktool
+    state: present

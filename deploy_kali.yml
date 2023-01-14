@@ -1,18 +1,13 @@
 - hosts: kali
   tasks:
-    # Wallpaper
-    - import_tasks: roles/change_wallpaper.yml
     # Install the core packages
     - import_tasks: roles/deploy_core.yml
-    # Scripts deploy - Each script is for a tool
-    # Install scripts are in the dir Scripts
-    - import_tasks: roles/deploy_scripts.yml
-    # Windows Red Team tools
-    - import_tasks: roles/deploy_win_scripts.yml
-    # Extra good stuff :) 
-    - import_tasks: roles/deploy_extra_scripts.yml
-    # Helpful tools before pentesting engagements  
-    #- import_tasks: roles/deploy_social_engineering.yml
-    # Deploy leaked/SecList wordlists
+    # apt installed tools
+    - import_tasks: roles/deploy_packages.yml
+    # Deploy custom scripts in the scripts directory
+    - import_tasks: roles/deploy_scripts.yml 
+    # Deploy wordlists
     - import_tasks: roles/deploy_wordlists.yml
-    
+    # Wallpaper
+    - import_tasks: roles/change_wallpaper.yml
+   

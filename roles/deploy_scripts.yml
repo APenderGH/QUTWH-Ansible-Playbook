@@ -22,50 +22,6 @@
   script: scripts/install-gophish.sh
   ignore_errors: True
 
-
-# PowerShell has some weird dependency, so if something broke, it's because of it.
-# It breaks the deployment, needs to be fixed!
-#- name: Installing PowerShell
-#  script: scripts/install-powershell.sh
-#  sudo: true
-
-# Git is required
-- name: Clone and install  IntruderPayloads 
-  shell: git clone https://github.com/1N3/IntruderPayloads.git /opt/IntruderPayloads;cd /opt/IntruderPayloads; chmod +x install.sh; bash install.sh
-  ignore_errors: True
- 
-# Git is required
-#- name: Clone and install  Findsploit
-#  shell: git clone https://github.com/1N3/Findsploit.git /opt/Findsploit;cd /opt/Findsploit; chmod +x install.sh; bash install.sh
-#  ignore_errors: True
- 
-# Git is required
-- name: Clone and install BruteX
-  shell: git clone https://github.com/1N3/BruteX.git /opt/BruteX; cd /opt/BruteX; chmod +x install.sh; bash install.sh 
-  ignore_errors: True
-
-# Git is required
-- name: Clone and install Goohak
-  script: scripts/install-Goohak.sh
-  ignore_errors: True
-
-# Git is required
-- name: Clone and install Aquatone
-  script: scripts/install-aquatone.sh
-  ignore_errors: True
-
-
-# Git is required
-- name: Clone and install BlackWidow
-  script: scripts/install-BlackWidow.sh
-  ignore_errors: True
-
-
-- name: Install bettercap
-  apt:
-    name: bettercap
-    state: present
-
 - name: Update the database
   shell: updatedb
 
