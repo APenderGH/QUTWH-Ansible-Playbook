@@ -17,3 +17,8 @@
   apt:
     name: apktool
     state: present
+- name: Install accountsservice
+  apt:
+    name: accountsservice
+    state: present
+
