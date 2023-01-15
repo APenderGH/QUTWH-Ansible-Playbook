@@ -1,7 +1,5 @@
 #!/bin/bash
-curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add -
-echo 'deb [arch=amd64] https://download.docker.com/linux/debian buster stable' > /etc/apt/sources.list.d/docker.list
-apt-get update
-apt-get install docker-ce -y
-apt-get install docker -y
-apt-get install docker-compose -y
+apt-get update -y
+apt-get remove docker docker-engine docker.io containerd runc -y
+apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin -y
+

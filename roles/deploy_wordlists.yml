@@ -3,10 +3,6 @@
   shell: cd /usr/share/wordlists/; git clone https://github.com/danielmiessler/SecLists.git
   ignore_errors: True
 
-- name: Download brutespray
-  shell: cd /usr/share/wordlists/; git clone https://github.com/x90skysn3k/brutespray.git
-  ignore_errors: True
-
 - name: Copying local wordlists
   copy:
     src: "{{ item }}"

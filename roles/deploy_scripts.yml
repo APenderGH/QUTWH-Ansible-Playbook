@@ -1,26 +1,10 @@
 
 - name: Updating
   shell: apt-get update
-
-- name: Installing dirsearch
-  script: scripts/install-dirsearch.sh
-  ignore_errors: True
-  
-- name: Installing rpivot
-  script: scripts/install-rpivot.sh
-  ignore_errors: True
-
-- name: Installing wfuzz
-  script: scripts/install-wfuzz.sh
-  ignore_errors: True
-
-- name: Installing pycharm
-  script: scripts/install-pycharm.sh
-  ignore_errors: True
-
-- name: Installing gophish
-  script: scripts/install-gophish.sh
-  ignore_errors: True
+    
+    #- name: Installing gophish
+    #script: scripts/install-gophish.sh
+    #ignore_errors: True
 
 - name: Update the database
   shell: updatedb
