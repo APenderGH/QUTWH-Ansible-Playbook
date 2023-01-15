@@ -1,5 +1,12 @@
+- name: Check if /opt/qutwh-images/ exists
+  stat:
+    path: '/opt/qutwh-images/'
+  register: qutwh_images
+
 - name: Make /opt/qutwh-images/
   shell: mkdir /opt/qutwh-images/
+  when: not qutwh_images.stat.exists
+
 #################### Copy images
 - name: Copying the wallpaper
   copy:
@@ -23,14 +30,26 @@
     - 'imgs/QUTWH_profile.png'
 
 #################### Set the images
+- name: Check that wallpaper path exists
+  stat: 
+    path: '/backdrop/screen0/monitorVirtual1/workspace0/last-image'
+  register: wallpaper_path
+
+- name: Report if wallpaper path doesn't exist
+  debug:
+    msg: 'Unable to find /backdrop/screen0/monitorVirtual1/workspace0/last-image please reboot and try again'
+  when: not wallpaper_path.stat.exists
+
 - name: Set the wallpaper
   shell: xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitorVirtual1/workspace0/last-image -s /opt/qutwh-images/QUTWH_full.png
+  when: wallpaper_path.stat.exists
 
-- name: Set the login background and save a copy of the original
+- name: Save a copy of the original background symlink
   copy:
     src: /usr/share/desktop-base/kali-theme/login/background
     dest: /usr/share/desktop-base/kali-theme/login/background.bak
-  shell: ln -s /opt/qutwh-images/QUTWH_login.jpg /usr/share/desktop-base/kali-theme/login/background
+- name: Create new symlink to the new background
+  shell: ln -sf /opt/qutwh-images/QUTWH_login.jpg /usr/share/desktop-base/kali-theme/login/background
 
 - name: Set the login profile
   copy:

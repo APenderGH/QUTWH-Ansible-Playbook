@@ -1,4 +1,5 @@
-- hosts: kali
+- hosts: localhost
+  connection: local
   tasks:
     # Install the core packages
     - import_tasks: roles/deploy_core.yml
