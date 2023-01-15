@@ -1,0 +1,8 @@
+[org.freedesktop.DisplayManager.AccountsService]
+BackgroundFile='/opt/qutwh-images/QUTWH_full.jpg'
+
+[User]
+Session=
+XSession=lightdm-xsession
+Icon=/var/lib/AccountsService/icons/qutwh.png
+SystemAccount=false

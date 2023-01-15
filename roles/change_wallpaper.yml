@@ -38,13 +38,25 @@
   copy:
     src: /usr/share/desktop-base/kali-theme/login/background
     dest: /usr/share/desktop-base/kali-theme/login/background.bak
+
 - name: Create new symlink to the new background
   shell: ln -sf /opt/qutwh-images/QUTWH_login.jpg /usr/share/desktop-base/kali-theme/login/background
 
-- name: Set the login profile
+- name: Add a login profile
   copy:
     src: /opt/qutwh-images/QUTWH_profile.png
-    dest: /home/qutwh/.face
+    dest: /var/lib/AccountsService/icons/qutwh.png
+
+- name: Set the login profile (1)
+  copy:
+    src: /home/qutwh/QUTWH-Ansible-Playbook/custom-files/qutwh
+    dest: /var/lib/AccountsService/users/qutwh
+
+- name: Set the login profile (2)
+  copy:
+    src: /home/qutwh/QUTWH-Ansible-Playbook/custom-files/lightdm-gtk-greeter.conf
+    dest: /etc/lightdm/lightdm-gtk-greeter.conf
+
       #  copy:
       #   src: /opt/qutwh-images/QUTWH_profile.png
       #   dest: /var/lib/AccountsService/icons/qutwh.png
