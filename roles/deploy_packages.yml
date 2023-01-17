@@ -21,4 +21,7 @@
   apt:
     name: accountsservice
     state: present
-
+- name: Install gdb
+  apt:
+    name: gdb
+    state: present

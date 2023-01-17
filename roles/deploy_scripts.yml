@@ -2,9 +2,13 @@
 - name: Updating
   shell: apt-get update
     
-    #- name: Installing gophish
-    #script: scripts/install-gophish.sh
-    #ignore_errors: True
+- name: Installing gef
+  script: scripts/install-gef.sh
+  ignore_errors: True
+
+- name: Installing pwntools
+  script: scripts/install-pwntools.sh
+  ignore_errors: True
 
 - name: Update the database
   shell: updatedb
